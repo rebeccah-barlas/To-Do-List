@@ -1,0 +1,40 @@
+.todo-form {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: black;
+}
+
+.todo-form input {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-size: medium;
+    color: black;
+    display: flex;
+}
+
+.priority {
+    justify-content: space-evenly;
+    display: flex;                
+}
+
+.priority input[type="radio"] {
+    background-color: white;
+    cursor: pointer;
+}
+
+button {
+    background-color: #ff1493;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: medium;
+    cursor: pointer;
+}
