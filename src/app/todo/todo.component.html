@@ -2,24 +2,30 @@
     <div class="main-content">
         <h1>To-Do List</h1>
         <p>A place to store your todos</p>
-        <div *ngIf="isListEmpty() || allCompleted()">
+        <div class="search-container">
+            <label for="search">Search todos:</label>
+            <input id="search" type="text" [(ngModel)]="searchQuery" placeholder="Search for a task" />
+        </div>
+        <div *ngIf="allCompleted()">
             <h2>Congratulations! You've completed all your tasks!</h2>
         </div>
         <ol>
-            <li *ngFor="let Todo of todos; let i = index" [class.completed]="Todo.completed">
+            <li *ngFor="let Todo of filteredTodos; let i = index" [class.completed]="Todo.completed">
                 <!-- when todo.completed is true, the completed class styling is applied -->
-                {{Todo.task}}
+                <span *ngIf="Todo.priority" [ngClass]="{
+                    'high-priority': Todo.priority === 'HIGH',
+                    'low-priority': Todo.priority === 'LOW',
+                    'normal-priority': Todo.priority === 'NORMAL'
+                }">
+                    {{Todo.task}} ({{Todo.duration}} mins)
+                    <span class="priority-text"> Priority: {{Todo.priority}}</span>
+                </span>
                 <div class="right-aligned-items">
                     <button *ngIf="!Todo.completed" (click)="completeTask(i)">Complete</button>
                     <button (click)="removeTodo(i)">X</button>
-                    <span *ngIf="Todo.priority != 'NORMAL'"
-                        [ngClass]="{'high-priority': Todo.priority === 'HIGH', 'low-priority': Todo.priority === 'LOW'}">
-                        Priority: {{Todo.priority}}
-                    </span>
                 </div>
             </li>
         </ol>
         <app-todo-form (save)="addTodo($event)"></app-todo-form>
-        <!-- listening for the "save" event from the child and passing to the addTodo method -->
     </div>
 </div>

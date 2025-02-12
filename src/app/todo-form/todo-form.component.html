@@ -1,8 +1,9 @@
 <div class="todo-form">
-  <input [(ngModel)]="newTask" placeholder="Enter a new task" /> <!--input field is bound to newtask property-->
-  <input type="number" [(ngModel)]="newDuration" placeholder="Duration (minutes)" />
-  <!--input field is bound to newDuration property-->
-
+  <p>Enter a new task to add to the list:</p>
+  <input [(ngModel)]="newTask" placeholder="Task" /> <!--input field is bound to newtask property-->
+  <p>Estimated time to complete (in minutes):</p>
+  <input type="number" [(ngModel)]="newDuration" placeholder="Duration" /> <!--input field is bound to newDuration property-->
+  <p>What is the priority level?</p>
   <div class="priority">
     <label>
       <input type="radio" name="priority" [(ngModel)]="newPriority" value="HIGH" /> High
@@ -14,8 +15,5 @@
       <input type="radio" name="priority" [(ngModel)]="newPriority" value="LOW" /> Low
     </label>
   </div>
-
-
-
   <button type="button" (click)="addToDo()">Add</button>
 </div>

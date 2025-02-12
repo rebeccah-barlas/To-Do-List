@@ -11,12 +11,11 @@ import { Todo } from '../models/todo.model';
 export class TodoFormComponent {
   newTask: string = '';
   newDuration: number = 0;
-  newPriority: 'HIGH' | 'NORMAL' | 'LOW' = 'NORMAL'; //default set to "normal" priority
+  newPriority: 'HIGH' | 'NORMAL' | 'LOW' = 'NORMAL';
 
   @Output() save = new EventEmitter<Todo>(); // emits an object of type "Todo"
 
   addToDo() {
-    console.log('Add Todo Triggered', this.newPriority);
     if (this.newDuration > 0) {
       const newTodo: Todo = { // "const" declares a constant variable called newTodo that is of type Todo
         task: this.newTask,
